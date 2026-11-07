@@ -1,0 +1,87 @@
+name: HomeFind
+options:
+  bundleIdPrefix: org.homeroll
+  deploymentTarget:
+    iOS: "26.0"
+  createIntermediateGroups: true
+  developmentLanguage: de
+settings:
+  base:
+    SWIFT_VERSION: "6.0"
+    SWIFT_DEFAULT_ACTOR_ISOLATION: MainActor
+    SWIFT_APPROACHABLE_CONCURRENCY: YES
+    MARKETING_VERSION: "1.0.0"
+    CURRENT_PROJECT_VERSION: "1"
+    DEVELOPMENT_TEAM: ""
+    CODE_SIGN_STYLE: Automatic
+    SWIFT_EMIT_LOC_STRINGS: YES
+    LOCALIZATION_PREFERS_STRING_CATALOGS: YES
+targets:
+  HomeFind:
+    type: application
+    platform: iOS
+    sources:
+      - path: App
+      - path: Resources
+        buildPhase: resources
+    info:
+      path: App/Info.plist
+      properties:
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        CFBundleDisplayName: HomeFind
+        CFBundleDevelopmentRegion: en
+        CFBundleLocalizations: [en, de]
+        UILaunchScreen: {}
+        UISupportedInterfaceOrientations: [UIInterfaceOrientationPortrait]
+        UIBackgroundModes: [location, fetch]
+        BGTaskSchedulerPermittedIdentifiers: [org.homeroll.homefind.refresh]
+        NSLocationWhenInUseUsageDescription: "Damit du dich auf der Karte siehst und deinen Standort über deinen eigenen Server teilen kannst."
+        NSLocationAlwaysAndWhenInUseUsageDescription: "Damit deine Familie deinen Standort auch sieht, wenn HomeFind geschlossen ist. HomeFind sendet sparsam nur bei deutlichen Ortswechseln an deinen eigenen Server."
+        NSCameraUsageDescription: "Zum Scannen des QR-Codes, mit dem du ein weiteres Gerät verbindest."
+        NSLocalNetworkUsageDescription: "Verbindung zu deinem Standortserver im Heimnetz."
+        CFBundleURLTypes:
+          - CFBundleURLName: org.homeroll.homefind
+            CFBundleURLSchemes: [homefind]
+        NSAppTransportSecurity:
+          NSAllowsLocalNetworking: true
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: org.homeroll.homefind
+        TARGETED_DEVICE_FAMILY: "1"
+        GENERATE_INFOPLIST_FILE: NO
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+  HomeFindTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources: [Tests]
+    dependencies:
+      - target: HomeFind
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: org.homeroll.homefind.tests
+        GENERATE_INFOPLIST_FILE: YES
+        TEST_HOST: $(BUILT_PRODUCTS_DIR)/HomeFind.app/HomeFind
+        BUNDLE_LOADER: $(TEST_HOST)
+  HomeFindUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    sources: [UITests]
+    dependencies:
+      - target: HomeFind
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: org.homeroll.homefind.uitests
+        GENERATE_INFOPLIST_FILE: YES
+        TEST_TARGET_NAME: HomeFind
+schemes:
+  HomeFind:
+    build:
+      targets:
+        HomeFind: all
+    test:
+      config: Debug
+      targets: [HomeFindTests, HomeFindUITests]
+    run:
+      config: Debug

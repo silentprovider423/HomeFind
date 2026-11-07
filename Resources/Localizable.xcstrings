@@ -1,0 +1,2701 @@
+{
+  "sourceLanguage": "de",
+  "strings": {
+    "": {},
+    "%@ (%@) möchte deinem Standort folgen.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ (%2$@) möchte deinem Standort folgen."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ (%2$@) wants to follow your location."
+          }
+        }
+      }
+    },
+    "%@ ankommt": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ arrives"
+          }
+        }
+      }
+    },
+    "%@ entfernen": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remove %@"
+          }
+        }
+      }
+    },
+    "%@ entfernen?": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remove %@?"
+          }
+        }
+      }
+    },
+    "%@ hat „%@“ verlassen.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ hat „%2$@“ verlassen."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ left “%2$@”."
+          }
+        }
+      }
+    },
+    "%@ ist bei „%@“ angekommen.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ ist bei „%2$@“ angekommen."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ arrived at “%2$@”."
+          }
+        }
+      }
+    },
+    "%@ ist noch nicht in deiner Familie": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ is not in your family yet"
+          }
+        }
+      }
+    },
+    "%@ kann deinen Standort sehen.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ can see your location."
+          }
+        }
+      }
+    },
+    "%@ kann deinen Standort sehen. %@.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ kann deinen Standort sehen. %2$@."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ can see your location. %2$@."
+          }
+        }
+      }
+    },
+    "%@ kommt bei „%@“ an": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ kommt bei „%2$@“ an"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ arrives at “%2$@”"
+          }
+        }
+      }
+    },
+    "%@ teilt jetzt den Standort mit dir.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ is now sharing their location with you."
+          }
+        }
+      }
+    },
+    "%@ teilt jetzt den Standort mit dir. Möchtest du deinen Standort auch teilen?": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ is now sharing their location with you. Do you want to share yours too?"
+          }
+        }
+      }
+    },
+    "%@ verlässt": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ leaves"
+          }
+        }
+      }
+    },
+    "%@ verlässt „%@“": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ verlässt „%2$@“"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ leaves “%2$@”"
+          }
+        }
+      }
+    },
+    "%@ verwendet eventuell HomeFind nicht. Lade die Person über die Weboberfläche deines Servers ein – sobald sie beitritt, erscheint sie hier.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ may not be using HomeFind. Invite them via your server's web interface – once they join, they appear here."
+          }
+        }
+      }
+    },
+    "%lld": {},
+    "%lld Personen und Geräte": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld people and devices"
+          }
+        }
+      }
+    },
+    "%lld Standorte warten auf Verbindung.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld locations are waiting for a connection."
+          }
+        }
+      }
+    },
+    "%lld von %lld Regionen belegt (eigene Orte und Mitteilungen).": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$lld von %2$lld Regionen belegt (eigene Orte und Mitteilungen)."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$lld of %2$lld regions in use (your places and notifications)."
+          }
+        }
+      }
+    },
+    "API-Schlüssel": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "API key"
+          }
+        }
+      }
+    },
+    "Abbrechen": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cancel"
+          }
+        }
+      }
+    },
+    "Ablehnen": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Decline"
+          }
+        }
+      }
+    },
+    "Abmelden": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sign Out"
+          }
+        }
+      }
+    },
+    "Abmelden?": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sign out?"
+          }
+        }
+      }
+    },
+    "Adresse deines Dawarich-Servers, z. B. im Heimnetz oder über VPN.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Address of your Dawarich server, e.g. on your home network or via VPN."
+          }
+        }
+      }
+    },
+    "Adresse nicht verfügbar": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Address not available"
+          }
+        }
+      }
+    },
+    "Adresse oder Ort": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Address or place"
+          }
+        }
+      }
+    },
+    "Adresse suchen …": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Search address …"
+          }
+        }
+      }
+    },
+    "Adresse wird gesucht …": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Looking up address …"
+          }
+        }
+      }
+    },
+    "Aktualisiert": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Updated"
+          }
+        }
+      }
+    },
+    "Aktueller Standort": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Current Location"
+          }
+        }
+      }
+    },
+    "Aktueller Standort von %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@'s current location"
+          }
+        }
+      }
+    },
+    "Akzeptieren": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Accept"
+          }
+        }
+      }
+    },
+    "Alle Geräte mit HomeFind auf einer Karte, mit Batterie und letztem Ort.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "All devices with HomeFind on one map, with battery and last location."
+          }
+        }
+      }
+    },
+    "Als Favoriten sichern": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add to Favorites"
+          }
+        }
+      }
+    },
+    "Als „Mein Standort“ verwenden": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Use as “My Location”"
+          }
+        }
+      }
+    },
+    "Alter Standort": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Old location"
+          }
+        }
+      }
+    },
+    "An:": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "To:"
+          }
+        }
+      }
+    },
+    "Anfrage an %@ gesendet.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Request sent to %@."
+          }
+        }
+      }
+    },
+    "Anfrage gesendet": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Request sent"
+          }
+        }
+      }
+    },
+    "Anmelden": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sign In"
+          }
+        }
+      }
+    },
+    "Anmelden mit": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sign in with"
+          }
+        }
+      }
+    },
+    "Anmeldung abgelaufen oder Schlüssel ungültig.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Session expired or key invalid."
+          }
+        }
+      }
+    },
+    "Antwort des Servers nicht lesbar.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Could not read the server's response."
+          }
+        }
+      }
+    },
+    "Apple Karten": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Apple Maps"
+          }
+        }
+      }
+    },
+    "Apple sieht nur, welche Kartenausschnitte geladen werden.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Apple only sees which map tiles are loaded."
+          }
+        }
+      }
+    },
+    "Apple-Dienste": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Apple services"
+          }
+        }
+      }
+    },
+    "Arbeit": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Work"
+          }
+        }
+      }
+    },
+    "Aus Favoriten löschen": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remove from Favorites"
+          }
+        }
+      }
+    },
+    "Ausgewertet auf diesem iPhone mit dem Standort, den %@ mit dir teilt.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Evaluated on this iPhone using the location %@ shares with you."
+          }
+        }
+      }
+    },
+    "Ausgewertet auf diesem iPhone über Region Monitoring – es wird nichts zusätzlich gesendet.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Evaluated on this iPhone using region monitoring – nothing extra is sent."
+          }
+        }
+      }
+    },
+    "Batterie %lld %%": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Battery %lld %%"
+          }
+        }
+      }
+    },
+    "Bei dir": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "With You"
+          }
+        }
+      }
+    },
+    "Bis zum Ende des Tages": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Until End of Day"
+          }
+        }
+      }
+    },
+    "Code anzeigen": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Show Code"
+          }
+        }
+      }
+    },
+    "Dafür gehen Koordinaten an Apple. Ohne: Standortnamen und Adressen vom Server.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This sends coordinates to Apple. Without it: place names and addresses from your server."
+          }
+        }
+      }
+    },
+    "Das Gerät verschwindet aus der Liste und hört beim nächsten Abgleich auf zu senden. Bereits gesendete Standorte bleiben in deinem Server-Verlauf.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The device disappears from the list and stops sending at its next sync. Locations already sent stay in your server history."
+          }
+        }
+      }
+    },
+    "Das Gerät, von dem %@ den Standort teilt.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The device %@ shares their location from."
+          }
+        }
+      }
+    },
+    "Das ist kein HomeFind-Code.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This is not a HomeFind code."
+          }
+        }
+      }
+    },
+    "Datenschutz": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Privacy"
+          }
+        }
+      }
+    },
+    "Dein Server": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your server"
+          }
+        }
+      }
+    },
+    "Dein Server teilt deinen Standort mit allen Mitgliedern deiner Familie. Neue Personen lädst du über die Weboberfläche ein.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your server shares your location with all members of your family. Invite new people via the web interface."
+          }
+        }
+      }
+    },
+    "Dein Server teilt mit der ganzen Familie – danach sieht niemand in deiner Familie deinen Standort.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your server shares with the whole family – afterwards nobody in your family sees your location."
+          }
+        }
+      }
+    },
+    "Dein Standort wird nicht mehr geteilt.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your location is no longer shared."
+          }
+        }
+      }
+    },
+    "Dein eigener Server": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your own server"
+          }
+        }
+      }
+    },
+    "Deine Familie sieht deinen Standort für die gewählte Dauer.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your family sees your location for the chosen duration."
+          }
+        }
+      }
+    },
+    "Deine Familie sieht deinen Standort.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your family can see your location."
+          }
+        }
+      }
+    },
+    "Deine Familie sieht deinen Standort. %@.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your family can see your location. %@."
+          }
+        }
+      }
+    },
+    "Deine Orte (Privat, Arbeit …) und Ankunft/Verlassen dort.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your places (Home, Work …) and arrivals/departures there."
+          }
+        }
+      }
+    },
+    "Deine Standorte liegen auf deinem eigenen Server, nicht bei Apple oder einem anderen Anbieter.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your locations live on your own server, not with Apple or any other provider."
+          }
+        }
+      }
+    },
+    "Den Schlüssel findest du in der Weboberfläche unter „Einstellungen“ → „API-Schlüssel“.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You'll find the key in the web interface under “Settings” → “API key”."
+          }
+        }
+      }
+    },
+    "Der Code enthält deinen Zugangsschlüssel. Zeige ihn nur auf deinen eigenen Geräten.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The code contains your access key. Only show it to your own devices."
+          }
+        }
+      }
+    },
+    "Der Server hat keinen Schlüssel geliefert.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The server did not return a key."
+          }
+        }
+      }
+    },
+    "Der Zielort wird dafür an Apple Karten übergeben.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The destination will be handed to Apple Maps."
+          }
+        }
+      }
+    },
+    "Details": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Details"
+          }
+        }
+      }
+    },
+    "Die gewählte Dauer ist abgelaufen. Deine Familie sieht deinen Standort nicht mehr.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The chosen duration has ended. Your family no longer sees your location."
+          }
+        }
+      }
+    },
+    "Diese Person möchte deinen Standort sehen.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This person wants to see your location."
+          }
+        }
+      }
+    },
+    "Diese Person teilt ihren Standort mit dir. Möchtest du deinen Standort teilen?": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This person is sharing their location with you. Do you want to share yours?"
+          }
+        }
+      }
+    },
+    "Dieses Gerät entfernen": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remove This Device"
+          }
+        }
+      }
+    },
+    "Dieses Gerät entfernen?": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remove this device?"
+          }
+        }
+      }
+    },
+    "Dieses iPhone": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This iPhone"
+          }
+        }
+      }
+    },
+    "Dieses iPhone als „Mein Standort“ verwenden": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Use This iPhone as “My Location”"
+          }
+        }
+      }
+    },
+    "Dieses iPhone entfernen": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remove This iPhone"
+          }
+        }
+      }
+    },
+    "Dieses iPhone sendet dann keinen Standort mehr.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This iPhone will no longer send its location."
+          }
+        }
+      }
+    },
+    "Dieses iPhone wird abgemeldet und sendet keinen Standort mehr.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This iPhone will be signed out and stop sending its location."
+          }
+        }
+      }
+    },
+    "Dieses iPhone wurde aus deinem Konto entfernt.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This iPhone was removed from your account."
+          }
+        }
+      }
+    },
+    "Dieses iPhone • Ortungsdienste aus": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This iPhone • Location Services off"
+          }
+        }
+      }
+    },
+    "Dieses iPhone • Standort wird nicht geteilt": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This iPhone • Not sharing location"
+          }
+        }
+      }
+    },
+    "Du bist bei „%@“ angekommen.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You arrived at “%@”."
+          }
+        }
+      }
+    },
+    "Du hast „%@“ verlassen.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You left “%@”."
+          }
+        }
+      }
+    },
+    "Du kannst deinen Standort nicht mit dir selbst teilen.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You can't share your location with yourself."
+          }
+        }
+      }
+    },
+    "Du teilst deinen Standort jetzt mit %@.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You are now sharing your location with %@."
+          }
+        }
+      }
+    },
+    "Du teilst deinen Standort jetzt mit deiner Familie.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You are now sharing your location with your family."
+          }
+        }
+      }
+    },
+    "Du teilst gerade": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Currently sharing"
+          }
+        }
+      }
+    },
+    "E-Mail": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Email"
+          }
+        }
+      }
+    },
+    "E-Mail-Adresse": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Email address"
+          }
+        }
+      }
+    },
+    "Eigene Geräte": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your devices"
+          }
+        }
+      }
+    },
+    "Eigenes Etikett hinzufügen": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add Custom Label"
+          }
+        }
+      }
+    },
+    "Emoji": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Emoji"
+          }
+        }
+      }
+    },
+    "Entfernen": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remove"
+          }
+        }
+      }
+    },
+    "Erledigt": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Done"
+          }
+        }
+      }
+    },
+    "Etikett": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Label"
+          }
+        }
+      }
+    },
+    "Familie": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Family"
+          }
+        }
+      }
+    },
+    "Favoriten": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Favorites"
+          }
+        }
+      }
+    },
+    "Favoriten, Kartenstil, Strecke": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Favorites, map style, distance unit"
+          }
+        }
+      }
+    },
+    "Fehler": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Error"
+          }
+        }
+      }
+    },
+    "Fertig": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Done"
+          }
+        }
+      }
+    },
+    "Finde deine Freund:innen und Familie auf einer Karte": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Find your friends and family on a map"
+          }
+        }
+      }
+    },
+    "Fortfahren": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Continue"
+          }
+        }
+      }
+    },
+    "Freigaben und Anfragen": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Shares and requests"
+          }
+        }
+      }
+    },
+    "Für dieses Konto ist die Zwei-Faktor-Anmeldung aktiv. Melde dich mit einem API-Schlüssel an.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Two-factor sign-in is enabled for this account. Sign in with an API key."
+          }
+        }
+      }
+    },
+    "Gerät hinzufügen": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add Device"
+          }
+        }
+      }
+    },
+    "Gerät nicht gefunden": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Device not found"
+          }
+        }
+      }
+    },
+    "Gerät von %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@'s device"
+          }
+        }
+      }
+    },
+    "Geräte": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Devices"
+          }
+        }
+      }
+    },
+    "Geräte finden": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Find devices"
+          }
+        }
+      }
+    },
+    "Geräte von %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@'s Devices"
+          }
+        }
+      }
+    },
+    "Groß": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Large"
+          }
+        }
+      }
+    },
+    "Hinzufügen": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add"
+          }
+        }
+      }
+    },
+    "HomeFind": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "HomeFind"
+          }
+        }
+      }
+    },
+    "HomeFind zeigt dich auf der Karte und teilt deinen Standort mit deiner Familie – nur wenn du es einschaltest. Mit „Immer“ sieht dich deine Familie auch, wenn die App geschlossen ist. Im Hintergrund sendet HomeFind nur bei deutlichen Ortswechseln, das schont den Akku.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "HomeFind shows you on the map and shares your location with your family – only when you turn it on. With “Always”, your family also sees you when the app is closed. In the background HomeFind only sends on significant location changes, which saves battery."
+          }
+        }
+      }
+    },
+    "Hybrid": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hybrid"
+          }
+        }
+      }
+    },
+    "Häufigkeit": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Frequency"
+          }
+        }
+      }
+    },
+    "Ich": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Me"
+          }
+        }
+      }
+    },
+    "Ich ankomme": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "I arrive"
+          }
+        }
+      }
+    },
+    "Ich komme bei „%@“ an": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "I arrive at “%@”"
+          }
+        }
+      }
+    },
+    "Ich verlasse": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "I leave"
+          }
+        }
+      }
+    },
+    "Ich verlasse „%@“": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "I leave “%@”"
+          }
+        }
+      }
+    },
+    "Im Hintergrund senden": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Send in Background"
+          }
+        }
+      }
+    },
+    "Im Vordergrund höchstens jede Minute oder ab 50 m Bewegung, im Hintergrund nur bei deutlichen Ortswechseln und Besuchen. Kein Push, kein Dritt-SDK, keine Analyse.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "In the foreground at most once a minute or after 50 m of movement, in the background only on significant location changes and visits. No push, no third-party SDK, no analytics."
+          }
+        }
+      }
+    },
+    "Immer erlauben": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Allow Always"
+          }
+        }
+      }
+    },
+    "In Kilometern": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "In Kilometers"
+          }
+        }
+      }
+    },
+    "In Meilen": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "In Miles"
+          }
+        }
+      }
+    },
+    "In „Einstellungen“ aktivieren": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Turn On in Settings"
+          }
+        }
+      }
+    },
+    "Installiere HomeFind auf dem anderen iPhone oder iPad, tippe bei der Anmeldung auf „QR-Code scannen“ und halte die Kamera auf diesen Code.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Install HomeFind on the other iPhone or iPad, tap “Scan QR Code” when signing in and point the camera at this code."
+          }
+        }
+      }
+    },
+    "Jeder gesendete Punkt bleibt in deinem Konto (Dawarich speichert einen Verlauf). Nur du siehst ihn; löschen in der Weboberfläche.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Every point sent stays in your account (Dawarich keeps a history). Only you see it; delete it in the web interface."
+          }
+        }
+      }
+    },
+    "Jedes Mal": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Every Time"
+          }
+        }
+      }
+    },
+    "Jetzt": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Now"
+          }
+        }
+      }
+    },
+    "Kann deinen Standort sehen": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Can see your location"
+          }
+        }
+      }
+    },
+    "Kann deinen Standort sehen, Anfrage gesendet": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Can see your location, request sent"
+          }
+        }
+      }
+    },
+    "Karte auswählen": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose Map"
+          }
+        }
+      }
+    },
+    "Kartenbilder": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Map tiles"
+          }
+        }
+      }
+    },
+    "Kein Standort gefunden": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No location found"
+          }
+        }
+      }
+    },
+    "Kein Symbol": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No Symbol"
+          }
+        }
+      }
+    },
+    "Kilometer": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kilometers"
+          }
+        }
+      }
+    },
+    "Klein": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Small"
+          }
+        }
+      }
+    },
+    "Kontakt": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Contact"
+          }
+        }
+      }
+    },
+    "Kontakte": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Contacts"
+          }
+        }
+      }
+    },
+    "Konto": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Account"
+          }
+        }
+      }
+    },
+    "Lade Personen über die Weboberfläche deines Servers in deine Familie ein.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Invite people to your family via your server's web interface."
+          }
+        }
+      }
+    },
+    "Lege auf deinem Server eine Familie an oder nimm eine Einladung an. Personen in deiner Familie erscheinen dann hier.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Create a family on your server or accept an invitation. People in your family will then appear here."
+          }
+        }
+      }
+    },
+    "Liegen in deinem Server-Konto. Personen in deiner Familie sehen statt der Adresse diesen Namen, wenn du dort bist – hier in HomeFind. Ankunft und Verlassen meldet dieses iPhone an deinen Server.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stored in your server account. HomeFind shows these names instead of an address. This iPhone reports arrivals and departures to your server."
+          }
+        }
+      }
+    },
+    "Meilen": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Miles"
+          }
+        }
+      }
+    },
+    "Mein Standort": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "My Location"
+          }
+        }
+      }
+    },
+    "Mein aktueller Standort": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "My current location"
+          }
+        }
+      }
+    },
+    "Meine Geräte": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "My Devices"
+          }
+        }
+      }
+    },
+    "Mitglieder entfernst du in der Familienverwaltung deines Servers.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remove members in your server's family management."
+          }
+        }
+      }
+    },
+    "Mitteilung": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Notify"
+          }
+        }
+      }
+    },
+    "Mitteilungen": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Notifications"
+          }
+        }
+      }
+    },
+    "Mitteilungen eingerichtet": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Notifications set up"
+          }
+        }
+      }
+    },
+    "Mitteilungen erlauben": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Allow Notifications"
+          }
+        }
+      }
+    },
+    "Mitteilungen gibt es, sobald %@ den Standort mit dir teilt.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Notifications are available once %@ shares their location with you."
+          }
+        }
+      }
+    },
+    "Mitteilungen von HomeFind anpassen": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Customize HomeFind Notifications"
+          }
+        }
+      }
+    },
+    "Mitteilungsregeln": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Notification rules"
+          }
+        }
+      }
+    },
+    "Mittel": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Medium"
+          }
+        }
+      }
+    },
+    "Modell": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Model"
+          }
+        }
+      }
+    },
+    "Name": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Name"
+          }
+        }
+      }
+    },
+    "Name und Symbol": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Name and Symbol"
+          }
+        }
+      }
+    },
+    "Name und Symbol bearbeiten": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Edit Name and Symbol"
+          }
+        }
+      }
+    },
+    "Name, Symbol, Batterie und letzter Ort als private Notiz – nur für dich.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Name, symbol, battery and last location as a private note – only for you."
+          }
+        }
+      }
+    },
+    "Nicht teilen": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Don't Share"
+          }
+        }
+      }
+    },
+    "Niemand sieht deinen Standort.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nobody can see your location."
+          }
+        }
+      }
+    },
+    "Niemand – deine Familie hat keine weiteren Mitglieder.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nobody – your family has no other members."
+          }
+        }
+      }
+    },
+    "Niemand. Du teilst deinen Standort gerade nicht.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nobody. You're not sharing your location right now."
+          }
+        }
+      }
+    },
+    "Noch %lld Minuten": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld minutes left"
+          }
+        }
+      }
+    },
+    "Noch %lld Stunden": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld hours left"
+          }
+        }
+      }
+    },
+    "Noch 1 Minute": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1 minute left"
+          }
+        }
+      }
+    },
+    "Noch 1 Stunde": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1 hour left"
+          }
+        }
+      }
+    },
+    "Noch keine Familie": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No family yet"
+          }
+        }
+      }
+    },
+    "Nur die Person, die die Familie erstellt hat, kann Mitglieder entfernen. Du kannst die Familie in der Weboberfläche verlassen.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Only the person who created the family can remove members. You can leave the family in the web interface."
+          }
+        }
+      }
+    },
+    "Nur dieses iPhone": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This iPhone only"
+          }
+        }
+      }
+    },
+    "Nur einmal": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Only Once"
+          }
+        }
+      }
+    },
+    "Nur solange du teilst sehen ihn die Mitglieder deiner Familie – nur den letzten Ort, keinen Verlauf.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Family members see it only while you share – only the latest place, no history."
+          }
+        }
+      }
+    },
+    "Nur wenn du auf „Route“ tippst oder eine Detailkarte öffnest.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Only when you tap “Directions” or open a detail card."
+          }
+        }
+      }
+    },
+    "OK": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "OK"
+          }
+        }
+      }
+    },
+    "Online": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Online"
+          }
+        }
+      }
+    },
+    "Ort": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Location"
+          }
+        }
+      }
+    },
+    "Ortsnamen über Apple suchen": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Look up place names via Apple"
+          }
+        }
+      }
+    },
+    "Ortung erlauben": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Allow Location"
+          }
+        }
+      }
+    },
+    "Ortung erlaubt": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Location allowed"
+          }
+        }
+      }
+    },
+    "Ortung in „Einstellungen“ aktivieren": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Turn On Location in Settings"
+          }
+        }
+      }
+    },
+    "Ortung „Immer“ erlauben, damit deine Familie dich auch sieht, wenn HomeFind geschlossen ist.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Allow location “Always” so your family also sees you when HomeFind is closed."
+          }
+        }
+      }
+    },
+    "Ortungsdienste deaktiviert": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Location Services Off"
+          }
+        }
+      }
+    },
+    "Ortungsdienste deaktiviert – in „Einstellungen“ aktivieren": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Location Services off – turn on in Settings"
+          }
+        }
+      }
+    },
+    "Passwort": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Password"
+          }
+        }
+      }
+    },
+    "Person einladen …": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Invite Person …"
+          }
+        }
+      }
+    },
+    "Person nicht gefunden": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Person not found"
+          }
+        }
+      }
+    },
+    "Personen": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "People"
+          }
+        }
+      }
+    },
+    "Personen finden": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Find people"
+          }
+        }
+      }
+    },
+    "Privat": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Home"
+          }
+        }
+      }
+    },
+    "QR-Code scannen": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scan QR Code"
+          }
+        }
+      }
+    },
+    "Radius": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Radius"
+          }
+        }
+      }
+    },
+    "Route": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Directions"
+          }
+        }
+      }
+    },
+    "Route in „Karten“ öffnen?": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open directions in Maps?"
+          }
+        }
+      }
+    },
+    "Route und Fahrzeit": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Directions and travel time"
+          }
+        }
+      }
+    },
+    "Satellit": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Satellite"
+          }
+        }
+      }
+    },
+    "Schlüsselbund dieses iPhones": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This iPhone's keychain"
+          }
+        }
+      }
+    },
+    "Schule": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "School"
+          }
+        }
+      }
+    },
+    "Senden": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Send"
+          }
+        }
+      }
+    },
+    "Server": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Server"
+          }
+        }
+      }
+    },
+    "Sichern": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Save"
+          }
+        }
+      }
+    },
+    "Sieh, wo deine Familie gerade ist, und teile deinen Standort – für eine Stunde, bis zum Ende des Tages oder unbegrenzt.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "See where your family is right now and share your location – for an hour, until the end of the day or indefinitely."
+          }
+        }
+      }
+    },
+    "Sparsam: im Hintergrund sendet HomeFind nur bei deutlichen Ortswechseln (etwa 500 m) und bei Ankunft oder Abfahrt an einem Ort.%@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Battery-friendly: in the background HomeFind only sends on significant location changes (about 500 m) and when arriving at or leaving a place.%@"
+          }
+        }
+      }
+    },
+    "Sport": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gym"
+          }
+        }
+      }
+    },
+    "Standard": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Standard"
+          }
+        }
+      }
+    },
+    "Standort 1 Std. teilen": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Share for One Hour"
+          }
+        }
+      }
+    },
+    "Standort nicht mehr teilen": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stop Sharing My Location"
+          }
+        }
+      }
+    },
+    "Standort nicht mehr teilen?": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stop sharing your location?"
+          }
+        }
+      }
+    },
+    "Standort teilen": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Share My Location"
+          }
+        }
+      }
+    },
+    "Standort und Mitteilungen": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Location and Notifications"
+          }
+        }
+      }
+    },
+    "Standort wird nicht geteilt": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Not sharing location"
+          }
+        }
+      }
+    },
+    "Standort wird nicht mehr geteilt": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Location no longer shared"
+          }
+        }
+      }
+    },
+    "Standort-Verlauf": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Location history"
+          }
+        }
+      }
+    },
+    "Standorte gehen nur an deinen selbst betriebenen Dawarich-Server – nicht an Apple oder andere.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Locations only go to your self-hosted Dawarich server – not to Apple or anyone else."
+          }
+        }
+      }
+    },
+    "Standortname": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Location Name"
+          }
+        }
+      }
+    },
+    "Standortnamen": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Location Names"
+          }
+        }
+      }
+    },
+    "Standortnamen bearbeiten": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Edit Location Names"
+          }
+        }
+      }
+    },
+    "Standortnamen hinzufügen": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add Location Name"
+          }
+        }
+      }
+    },
+    "Strecke": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Distance"
+          }
+        }
+      }
+    },
+    "Symbol": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Symbol"
+          }
+        }
+      }
+    },
+    "System": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "System"
+          }
+        }
+      }
+    },
+    "Teilen": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Share"
+          }
+        }
+      }
+    },
+    "Teilen des Standorts erfragen": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ask to Follow Location"
+          }
+        }
+      }
+    },
+    "Unbegrenzt": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Indefinitely"
+          }
+        }
+      }
+    },
+    "Unbegrenzt teilen": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Share Indefinitely"
+          }
+        }
+      }
+    },
+    "Ungültige Adresse": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Invalid Address"
+          }
+        }
+      }
+    },
+    "Ungültige Server-Adresse.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Invalid server address."
+          }
+        }
+      }
+    },
+    "Vergrößern": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zoom In"
+          }
+        }
+      }
+    },
+    "Verkehr": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Traffic"
+          }
+        }
+      }
+    },
+    "Verkleinern": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zoom Out"
+          }
+        }
+      }
+    },
+    "Verlauf in der Weboberfläche ansehen": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "View History in Web Interface"
+          }
+        }
+      }
+    },
+    "Von": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "From"
+          }
+        }
+      }
+    },
+    "Wann": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "When"
+          }
+        }
+      }
+    },
+    "Was liegt wo": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "What is stored where"
+          }
+        }
+      }
+    },
+    "Weboberfläche öffnen": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open Web Interface"
+          }
+        }
+      }
+    },
+    "Weiter": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Continue"
+          }
+        }
+      }
+    },
+    "Weiteres Gerät hinzufügen": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add Another Device"
+          }
+        }
+      }
+    },
+    "Weiteres eigenes Gerät? Auf dem ersten Gerät unter „Geräte“ → „+“ den Code anzeigen und hier scannen.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Another device of yours? On your first device, show the code under “Devices” → “+” and scan it here."
+          }
+        }
+      }
+    },
+    "Wenn": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "When"
+          }
+        }
+      }
+    },
+    "Wer deinen Server verwaltet, kann technisch alle dort gespeicherten Daten sehen.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Whoever runs your server can technically see all data stored there."
+          }
+        }
+      }
+    },
+    "Wer mit wem teilt, Dauer und offene Anfragen.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Who shares with whom, durations and open requests."
+          }
+        }
+      }
+    },
+    "Wer sieht mich gerade": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Who can see me now"
+          }
+        }
+      }
+    },
+    "Werden hier ausgewertet, nichts davon geht an den Server.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Evaluated here, none of it goes to the server."
+          }
+        }
+      }
+    },
+    "Willkommen bei HomeFind": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Welcome to HomeFind"
+          }
+        }
+      }
+    },
+    "Wird beim Abmelden gelöscht.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Deleted when you sign out."
+          }
+        }
+      }
+    },
+    "Wird für „Mein Standort“ verwendet": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Used for “My Location”"
+          }
+        }
+      }
+    },
+    "Wird geladen …": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Loading …"
+          }
+        }
+      }
+    },
+    "Zugangsschlüssel": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Access key"
+          }
+        }
+      }
+    },
+    "Zuletzt gesendet": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Last sent"
+          }
+        }
+      }
+    },
+    "https://standort.example.com": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "https://location.example.com"
+          }
+        }
+      }
+    },
+    "·": {},
+    "Über andere": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "About others"
+          }
+        }
+      }
+    },
+    "Über dich": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "About you"
+          }
+        }
+      }
+    },
+    "„%@“ ist anscheinend keine gültige E-Mail-Adresse.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "“%@” doesn't appear to be a valid email address."
+          }
+        }
+      }
+    },
+    "„%@“ wird aus deinem Konto entfernt.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "“%@” will be removed from your account."
+          }
+        }
+      }
+    },
+    "„Immer“ erlauben": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Allow “Always”"
+          }
+        }
+      }
+    },
+    "„Mein Standort“ kommt jetzt von diesem Gerät.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "“My Location” now comes from this device."
+          }
+        }
+      }
+    }
+  },
+  "version": "1.0"
+}
