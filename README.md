@@ -123,7 +123,7 @@ tools/        icon generator, strings, demo state, test runner
 
 ## License
 
-[MIT](LICENSE). Third-party: Dawarich (AGPL-3.0) is not included – HomeFind only talks to its HTTP API.
+[GPL-3.0](LICENSE) (GNU General Public License v3.0; releases up to this change were published under MIT). Third-party: Dawarich (AGPL-3.0) is not included – HomeFind only talks to its HTTP API.
 
 ---
 
