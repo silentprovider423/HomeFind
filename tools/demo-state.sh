@@ -27,9 +27,13 @@ if [ "$mode" = all ]; then
 else
   api "$FIND_IDA_KEY" PATCH /api/v1/families/sharing '{"enabled":false}' >/dev/null
 fi
+# alte Geräte-Einträge aus Testläufen entfernen (die App legt ihren eigenen neu an)
+for id in $(api "$FIND_MIA_KEY" GET "/api/v1/notes?standalone=true" | python3 -c 'import json,sys; [print(n["id"]) for n in json.load(sys.stdin) if (n.get("title") or "").startswith("homefind-") and n.get("title") != "homefind-device:demoipad0001"]'); do
+  api "$FIND_MIA_KEY" DELETE /api/v1/notes/$id >/dev/null
+done
 # zweites eigenes Gerät von Mia (Demo-iPad) als private Notiz
 NOTE=$(api "$FIND_MIA_KEY" GET "/api/v1/notes?standalone=true" | python3 -c 'import json,sys; print(next((str(n["id"]) for n in json.load(sys.stdin) if n.get("title")=="homefind-device:demoipad0001"),""))')
-BODY=$(python3 -c 'import json,datetime; print(json.dumps(json.dumps({"id":"demoipad0001","name":"iPad","emoji":"💻","model":"iPad (Demo)","system":"iPadOS 26.0","appVersion":"1.0.0","latitude":52.5219,"longitude":13.4132,"accuracy":20,"battery":41,"charging":False,"updatedAt":datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")}, ensure_ascii=False), ensure_ascii=False))')
+BODY=$(python3 -c 'import json,datetime; print(json.dumps(json.dumps({"id":"demoipad0001","name":"iPad","model":"iPad (Demo)","system":"iPadOS 26.0","appVersion":"1.0.0","latitude":52.5219,"longitude":13.4132,"accuracy":20,"battery":41,"charging":False,"updatedAt":datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")}, ensure_ascii=False), ensure_ascii=False))')
 if [ -n "$NOTE" ]; then api "$FIND_MIA_KEY" PATCH /api/v1/notes/$NOTE "{\"note\":{\"body\":$BODY}}" >/dev/null
 else api "$FIND_MIA_KEY" POST /api/v1/notes "{\"note\":{\"title\":\"homefind-device:demoipad0001\",\"body\":$BODY,\"noted_at\":\"$(date -u +%Y-%m-%dT%H:%M:%SZ)\"}}" >/dev/null; fi
 echo "Demozustand: $mode"

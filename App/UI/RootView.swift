@@ -30,6 +30,7 @@ struct MainView: View {
                     .presentationDragIndicator(.visible)
                     .interactiveDismissDisabled()
                     .sheet(item: $model.webURL) { SafariView(url: $0).ignoresSafeArea() }
+                    .sheet(isPresented: $model.showMapChooser) { MapChooserView().presentationDetents([.height(330)]) }
                     .alert("Fehler", isPresented: Binding(get: { model.errorMessage != nil }, set: { if !$0 { model.errorMessage = nil } })) {
                         Button("OK", role: .cancel) {}
                     } message: { Text(model.errorMessage ?? "") }

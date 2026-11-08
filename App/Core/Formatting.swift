@@ -8,7 +8,7 @@ enum Fmt {
         let s = now.timeIntervalSince(date)
         if s < 60 { return String(localized: "Jetzt") }
         let f = RelativeDateTimeFormatter()
-        f.unitsStyle = .abbreviated
+        f.unitsStyle = .short   // „vor 5 Min.“
         return f.localizedString(for: date, relativeTo: now)
     }
 

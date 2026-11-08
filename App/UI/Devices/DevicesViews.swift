@@ -53,7 +53,7 @@ struct OwnDeviceRow: View {
     let device: DeviceRecord
     var body: some View {
         HStack(spacing: 12) {
-            DeviceIcon(emoji: device.emoji)
+            DeviceIcon(emoji: device.emoji, symbol: device.symbol)
             VStack(alignment: .leading, spacing: 2) {
                 HStack(spacing: 4) {
                     Text(device.name).font(.body.weight(.semibold))
@@ -126,7 +126,7 @@ struct DeviceDetailView: View {
         List {
             Section {
                 HStack(spacing: 12) {
-                    DeviceIcon(emoji: d.emoji, size: 52)
+                    DeviceIcon(emoji: d.emoji, symbol: d.symbol, size: 52)
                     VStack(alignment: .leading, spacing: 3) {
                         Text(d.name).font(.title2.bold())
                         Text(DeviceStatus.subtitle(d, model: model)).font(.subheadline)

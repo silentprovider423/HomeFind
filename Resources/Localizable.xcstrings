@@ -2085,6 +2085,16 @@
         }
       }
     },
+    "Route …": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Directions …"
+          }
+        }
+      }
+    },
     "Satellit": {
       "localizations": {
         "en": {

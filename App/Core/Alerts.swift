@@ -6,7 +6,7 @@ import UserNotifications
 /// Liegt nur auf diesem Gerät und wird hier ausgewertet:
 /// - eigene Regeln über Region Monitoring (CLMonitor, max. 20 Regionen),
 /// - Regeln über Personen beim Abgleich ihres geteilten Standorts (Vordergrund, Ortswechsel, Hintergrund-Abruf).
-struct AlertRule: Codable, Identifiable, Equatable {
+nonisolated struct AlertRule: Codable, Identifiable, Equatable {
     enum Subject: Codable, Equatable, Hashable { case me, person(Int) }
     enum Trigger: String, Codable, CaseIterable { case arrives, leaves }
 
@@ -44,8 +44,9 @@ enum FenceRadius: Double, CaseIterable, Identifiable {
     var id: Double { rawValue }
 }
 
+/// Bewusst `nonisolated`: kein isoliertes deinit (das stürzte beim Freigeben am Ende synchroner Tests ab).
 @Observable
-final class AlertStore {
+nonisolated final class AlertStore {
     private(set) var rules: [AlertRule] = []
     private let url: URL
 

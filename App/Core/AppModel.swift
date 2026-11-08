@@ -75,6 +75,8 @@ final class AppModel {
     var devicesPath: [MapSelection] = []
     var mePath: [MeRoute] = []
     var showShareSheet = false
+    /// „Karte auswählen“ – wird aus der Infokarte präsentiert (die Karte selbst kann neben ihr nichts präsentieren).
+    var showMapChooser = false
     var detent: PresentationDetent = .medium
     var camera: MapCameraPosition = .userLocation(fallback: .automatic)
     var visibleRegion: MKCoordinateRegion?
@@ -114,11 +116,11 @@ final class AppModel {
         startServices()
         if UIApplication.shared.applicationState == .active { sceneBecameActive() }
         await refreshAll()
-        // Dieses Gerät war früher entfernt → wieder zulassen.
-        if accountSettings.removed.contains(ThisDevice.id) {
-            accountSettings.removed.removeAll { $0 == ThisDevice.id }
-            await saveAccountSettings()
-        }
+        // Frisch angemeldet: dieses iPhone liefert „Mein Standort“ (wie bei „Wo ist?“ auf einem neuen iPhone);
+        // war es früher entfernt, wird es wieder zugelassen.
+        accountSettings.removed.removeAll { $0 == ThisDevice.id }
+        accountSettings.meDevice = ThisDevice.id
+        await saveAccountSettings()
     }
 
     func signOut() {
@@ -295,6 +297,13 @@ final class AppModel {
             try await client.declineRequest(request.id)
             await refreshFamily()
         } catch { errorMessage = error.localizedDescription }
+    }
+
+    /// Route in Apple Karten (der Zielort geht dabei an Apple).
+    func openDirections(to c: CLLocationCoordinate2D, name: String) {
+        let item = MKMapItem(location: CLLocation(latitude: c.latitude, longitude: c.longitude), address: nil)
+        item.name = name
+        item.openInMaps(launchOptions: [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDefault])
     }
 
     func toggleFavorite(_ id: Int) {
@@ -534,7 +543,7 @@ final class AppModel {
             signOut()
             return
         }
-        if accountSettings.meDevice == nil {
+        if accountSettings.meDevice == nil || (settingsNoteId != nil && !ids.keys.contains(accountSettings.meDevice ?? "")) {
             accountSettings.meDevice = ThisDevice.id
             await saveAccountSettings()
         }
@@ -670,6 +679,8 @@ extension AppModel {
             case "places": tab = .me; mePath = [.places]
             case "alerts": tab = .me; mePath = [.alerts]
             case "share": tab = .people; showShareSheet = true
+            case "mapchooser": showMapChooser = true
+            case "toast": toast = kv.count > 1 ? kv[1] : "Test"
             case "large": detent = .large
             case "small": detent = MainView.smallDetent
             default: break

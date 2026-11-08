@@ -52,7 +52,7 @@ struct FamilyState: Decodable, Equatable {
 }
 
 /// Ein Eintrag aus `GET /api/v1/families/locations` (letzter Standort einer Person, die teilt).
-struct MemberLocation: Decodable, Equatable {
+nonisolated struct MemberLocation: Decodable, Equatable {
     let userId: Int
     let address: String?
     let name: String?
@@ -134,6 +134,15 @@ struct DeviceRecord: Codable, Equatable, Identifiable {
     var battery: Int?
     var charging: Bool?
     var updatedAt: Date
+
+    /// Symbol nach Gerätetyp (wenn kein Emoji gewählt ist).
+    var symbol: String {
+        let m = model.lowercased()
+        if m.contains("ipad") { return "ipad" }
+        if m.contains("mac") { return "laptopcomputer" }
+        if m.contains("watch") { return "applewatch" }
+        return "iphone"
+    }
 
     var coordinate: CLLocationCoordinate2D? {
         guard let latitude, let longitude else { return nil }

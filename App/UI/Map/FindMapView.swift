@@ -3,7 +3,7 @@ import MapKit
 
 /// Eine Stecknadel auf der Karte (Person, eigenes Gerät, Familiengerät) oder eine Gruppe davon.
 struct MapItem: Identifiable, Equatable {
-    enum Kind: Equatable { case person(initials: String, seed: Int), device(emoji: String?), familyDevice(initials: String, seed: Int) }
+    enum Kind: Equatable { case person(initials: String, seed: Int), device(emoji: String?, symbol: String), familyDevice(initials: String, seed: Int) }
     let selection: MapSelection
     let kind: Kind
     let title: String
@@ -48,7 +48,6 @@ enum Clustering {
 struct FindMapView: View {
     @Environment(AppModel.self) private var model
     @Namespace private var scope
-    @State private var showMapChooser = false
     @State private var didInitialFit = false
 
     private var items: [MapItem] {
@@ -62,7 +61,7 @@ struct FindMapView: View {
         // Eigene Geräte außer diesem iPhone (das zeigt der blaue Punkt).
         for d in model.devices where d.id != ThisDevice.id {
             if let c = d.coordinate {
-                list.append(MapItem(selection: .device(d.id), kind: .device(emoji: d.emoji), title: d.name, coordinate: c))
+                list.append(MapItem(selection: .device(d.id), kind: .device(emoji: d.emoji, symbol: d.symbol), title: d.name, coordinate: c))
             }
         }
         return list
@@ -89,8 +88,9 @@ struct FindMapView: View {
         .overlay(alignment: .topTrailing) {
             GlassEffectContainer {
                 VStack(spacing: 0) {
-                    Button { showMapChooser = true } label: {
-                        Image(systemName: mapSymbol).font(.system(size: 17, weight: .medium)).frame(width: 44, height: 44)
+                    Button { model.showMapChooser = true } label: {
+                        Image(systemName: mapSymbol).font(.system(size: 17, weight: .medium))
+                            .frame(width: 44, height: 44).contentShape(.rect)
                     }
                     .accessibilityLabel(Text("Karte auswählen"))
                     .accessibilityIdentifier("map-chooser")
@@ -128,9 +128,6 @@ struct FindMapView: View {
             guard !didInitialFit, count > 0 else { return }
             didInitialFit = true
             fitAll()
-        }
-        .sheet(isPresented: $showMapChooser) {
-            MapChooserView().presentationDetents([.height(330)])
         }
     }
 
@@ -179,7 +176,7 @@ struct PinView: View {
                     Circle().fill(.white).frame(width: 50, height: 50).shadow(color: .black.opacity(0.25), radius: 4, y: 2)
                     switch item.kind {
                     case .person(let i, let s), .familyDevice(let i, let s): Avatar(initials: i, seed: s, size: 44)
-                    case .device(let e): DeviceIcon(emoji: e, size: 44)
+                    case .device(let e, let sym): DeviceIcon(emoji: e, symbol: sym, size: 44)
                     }
                 }
                 Image(systemName: "triangle.fill").font(.system(size: 10)).foregroundStyle(.white)

@@ -182,6 +182,7 @@ final class APIClientTests: XCTestCase {
 
     @MainActor func testPointQueueFlushesAgainstServer() async throws {
         let q = PointQueue(fileName: "test-queue-\(UUID()).json")
+        Keep.objects.append(q)
         for i in 0..<3 {
             let loc = CLLocation(coordinate: .init(latitude: 52.5163 + Double(i) * 0.0001, longitude: 13.3777), altitude: 0,
                                  horizontalAccuracy: 10, verticalAccuracy: -1, timestamp: .now.addingTimeInterval(Double(i)))
@@ -200,6 +201,9 @@ final class APIClientTests: XCTestCase {
     }
 }
 
+/// Hält in Tests erzeugte App-Objekte bis Prozessende fest (keine Freigabe am Testende).
+@MainActor enum Keep { static var objects: [AnyObject] = [] }
+
 /// Reine App-Logik ohne Server.
 final class LogicTests: XCTestCase {
     @MainActor func testEndOfDayHours() {
@@ -212,8 +216,9 @@ final class LogicTests: XCTestCase {
         XCTAssertEqual(ShareDuration.indefinitely.serverValue(), "permanent")
     }
 
-    @MainActor func testAlertRuleFiresOnArrivalOnce() {
+    @MainActor func testAlertRuleFiresOnArrivalOnce() async {
         let store = AlertStore(fileName: "test-rules-\(UUID()).json")
+        Keep.objects.append(store)
         store.add(AlertRule(subject: .person(7), personName: "Leo", trigger: .arrives, placeName: "Schule",
                             latitude: 52.5200, longitude: 13.4050, radius: 150, repeats: false))
         func loc(_ lat: Double, _ t: Int) -> MemberLocation {
@@ -226,8 +231,9 @@ final class LogicTests: XCTestCase {
         XCTAssertFalse(store.rules[0].enabled)
     }
 
-    @MainActor func testAlertRuleLeaveRepeats() {
+    @MainActor func testAlertRuleLeaveRepeats() async {
         let store = AlertStore(fileName: "test-rules-\(UUID()).json")
+        Keep.objects.append(store)
         store.add(AlertRule(subject: .person(3), personName: "Ida", trigger: .leaves, placeName: "Arbeit",
                             latitude: 52.5, longitude: 13.4, radius: 200, repeats: true))
         func loc(_ lat: Double, _ t: Int) -> MemberLocation {
@@ -240,8 +246,9 @@ final class LogicTests: XCTestCase {
         XCTAssertTrue(store.evaluate(personId: 3, location: loc(52.51, 4)).isEmpty) // gleicher Zeitstempel → ignoriert
     }
 
-    @MainActor func testMeRegionRule() {
+    @MainActor func testMeRegionRule() async {
         let store = AlertStore(fileName: "test-rules-\(UUID()).json")
+        Keep.objects.append(store)
         let rule = AlertRule(subject: .me, trigger: .arrives, placeName: "Privat", latitude: 52.52, longitude: 13.40,
                              radius: 150, serverPlaceId: 12, repeats: true)
         store.add(rule)

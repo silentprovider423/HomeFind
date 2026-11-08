@@ -58,6 +58,14 @@ struct PeopleListView: View {
     private func row(_ p: Person) -> some View {
         NavigationLink(value: p.id) { PersonRow(person: p) }
             .accessibilityIdentifier("person-\(p.firstName)")
+            .contextMenu {
+                if let l = p.location {
+                    Button("Route …", systemImage: "car") { model.openDirections(to: l.coordinate, name: p.name) }
+                }
+                Button(p.isFavorite ? "Aus Favoriten löschen" : "Als Favoriten sichern", systemImage: p.isFavorite ? "star.slash" : "star") {
+                    model.toggleFavorite(p.id)
+                }
+            }
             .swipeActions {
                 Button { model.toggleFavorite(p.id) } label: {
                     Label(p.isFavorite ? "Aus Favoriten löschen" : "Als Favoriten sichern", systemImage: p.isFavorite ? "star.slash" : "star")

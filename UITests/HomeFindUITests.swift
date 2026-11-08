@@ -66,19 +66,23 @@ final class HomeFindUITests: XCTestCase {
 
     // MARK: Tests
 
-    @MainActor func testPeopleListShowsFamilyAndLeoOnMap() {
+    @MainActor func testPeopleListShowsFamily() {
         let app = makeApp()
-        app.launchEnvironment["FIND_START"] = ""
         app.launch()
         waitFor(app.buttons["person-Leo"])
         XCTAssertTrue(app.buttons["person-Ida"].exists)
         // Ida teilt nicht → Status statt Ort
         XCTAssertTrue(app.staticTexts["Standort wird nicht geteilt"].exists)
-        // Stecknadel auf der Karte öffnet die Detailkarte
+    }
+
+    @MainActor func testMapPinOpensPersonDetail() {
+        let app = makeApp()
+        app.launchEnvironment["FIND_START"] = ""   // Infokarte halb, Karte sichtbar
+        app.launch()
         let pin = app.buttons["pin-Leo Beispiel"]
         waitFor(pin)
         pin.tap()
-        waitFor(app.buttons["detail-favorite"])
+        waitFor(app.buttons["person-route"])
     }
 
     @MainActor func testShareOneHourShowsRemainingThenStop() async throws {
@@ -211,11 +215,13 @@ final class HomeFindUITests: XCTestCase {
 
     @MainActor func testMapChooser() {
         let app = makeApp()
+        app.launchEnvironment["FIND_START"] = ""
         app.launch()
         let chooser = app.buttons["map-chooser"]
         waitFor(chooser)
         chooser.tap()
         let sat = app.buttons.containing(NSPredicate(format: "label CONTAINS 'Satellit'")).firstMatch
+        if !sat.waitForExistence(timeout: 15) { print("HFDEBUG-START\n\(app.debugDescription)\nHFDEBUG-END") }
         waitFor(sat)
         sat.tap()
         XCTAssertTrue(sat.isSelected)
