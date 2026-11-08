@@ -4,7 +4,7 @@
 
 HomeFind is an independent iPhone client for a self-hosted Dawarich server. It aims to feel like Find My on iOS 26 (full-screen map, Liquid Glass card in three sizes, People · Devices · Me) while every location stays on hardware you own.
 
-> **Status:** first version, tested in the simulator against Dawarich **1.22.0** with test accounts and simulated locations. UI in **English and German** (follows the iPhone language). Code comments are in German.
+> **Status:** first version, tested in the simulator against Dawarich **1.22.0** with three test accounts and simulated locations (34 automated tests: API client against the server, sharing logic, and one UI test per main action – share 1 h/end of day/indefinitely, request, accept, decline, alerts, region monitoring with a simulated arrival, devices, privacy, map). UI in **English and German** (follows the iPhone language). Code comments are in German.
 >
 > Built with help from [Claude Code](https://claude.com/claude-code): Apple's Find My was analysed by names and texts only (no decompiling, no Apple code), the Swift was written together with it.
 >
