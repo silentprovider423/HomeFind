@@ -14,7 +14,7 @@ struct HomeFindApp: App {
                 .environment(model)
                 .onOpenURL { url in Task { await model.handleURL(url) } }
         }
-        .onChange(of: phase) { _, p in
+        .onChange(of: phase, initial: true) { _, p in
             switch p {
             case .active: model.sceneBecameActive()
             case .background: model.sceneEnteredBackground()

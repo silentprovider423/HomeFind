@@ -70,7 +70,16 @@ struct MainSheet: View {
                             .navigationDestination(for: MapSelection.self) { DeviceDetailView(selection: $0) }
                     }
                 case .me:
-                    NavigationStack { MeView() }
+                    NavigationStack(path: $model.mePath) {
+                        MeView()
+                            .navigationDestination(for: MeRoute.self) { route in
+                                switch route {
+                                case .privacy: PrivacyView()
+                                case .places: PlacesView()
+                                case .alerts: AlertsListView()
+                                }
+                            }
+                    }
                 }
             }
             .frame(maxHeight: .infinity)

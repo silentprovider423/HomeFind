@@ -2,7 +2,6 @@ import SwiftUI
 
 struct PeopleListView: View {
     @Environment(AppModel.self) private var model
-    @State private var showShare = false
 
     var body: some View {
         let people = model.people
@@ -26,7 +25,7 @@ struct PeopleListView: View {
                     } description: {
                         Text("Lade Personen über die Weboberfläche deines Servers in deine Familie ein.")
                     } actions: {
-                        Button("Standort teilen") { showShare = true }.buttonStyle(.borderedProminent)
+                        Button("Standort teilen") { model.showShareSheet = true }.buttonStyle(.borderedProminent)
                     }
                 }
             }
@@ -47,13 +46,13 @@ struct PeopleListView: View {
         .navigationTitle("Personen")
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
-                Button { showShare = true } label: { Image(systemName: "plus") }
+                Button { model.showShareSheet = true } label: { Image(systemName: "plus") }
                     .accessibilityLabel(Text("Standort teilen"))
                     .accessibilityIdentifier("people-add")
             }
         }
         .refreshable { await model.refreshFamily() }
-        .sheet(isPresented: $showShare) { ShareLocationView() }
+        .sheet(isPresented: Binding(get: { model.showShareSheet }, set: { model.showShareSheet = $0 })) { ShareLocationView() }
     }
 
     private func row(_ p: Person) -> some View {

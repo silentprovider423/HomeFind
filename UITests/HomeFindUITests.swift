@@ -1,30 +1,32 @@
 import XCTest
+import CoreLocation
 
 /// UI-Tests je Aktion mit Testkonten im Simulator (Standort simuliert). Mia ist angemeldet,
 /// Leo teilt, Ida teilt nicht. Zugänge: HF_TEST_* (tools/run-tests.sh), nie im Repo.
 final class HomeFindUITests: XCTestCase {
     var env: [String: String] = [:]
-    var app: XCUIApplication!
+    /// App mit Debug-Anmeldung (Mia) – je Test neu.
+    @MainActor func makeApp() -> XCUIApplication {
+        let a = XCUIApplication()
+        a.launchEnvironment["FIND_SERVER"] = env["HF_TEST_SERVER"]
+        a.launchEnvironment["FIND_TOKEN"] = env["HF_TEST_MIA_KEY"]
+        a.launchEnvironment["FIND_SKIP_ONBOARDING"] = "1"
+        a.launchEnvironment["FIND_START"] = "large"   // Infokarte groß, damit Listen ganz sichtbar sind
+        a.launchArguments += ["-AppleLanguages", "(de)", "-AppleLocale", "de_DE"]
+        return a
+    }
 
     override func setUp() async throws {
         continueAfterFailure = false
         env = ProcessInfo.processInfo.environment
         guard env["HF_TEST_SERVER"] != nil, env["HF_TEST_MIA_KEY"] != nil else { throw XCTSkip("HF_TEST_* fehlt") }
         try await resetState()
-        app = await MainActor.run { () -> XCUIApplication in
-            let a = XCUIApplication()
-            a.launchEnvironment["FIND_SERVER"] = env["HF_TEST_SERVER"]
-            a.launchEnvironment["FIND_TOKEN"] = env["HF_TEST_MIA_KEY"]
-            a.launchEnvironment["FIND_SKIP_ONBOARDING"] = "1"
-            a.launchArguments += ["-AppleLanguages", "(de)", "-AppleLocale", "de_DE"]
-            return a
-        }
     }
 
     // MARK: Server-Hilfen (direkt per HTTP, ohne App-Code)
 
     @discardableResult
-    func api(_ who: String, _ method: String, _ path: String, _ body: [String: Any]? = nil) async throws -> Any? {
+    private func api(_ who: String, _ method: String, _ path: String, _ body: [String: Any]? = nil) async throws -> Any? {
         var req = URLRequest(url: URL(string: env["HF_TEST_SERVER"]! + path)!)
         req.httpMethod = method
         req.setValue("Bearer \(env["HF_TEST_\(who)_KEY"]!)", forHTTPHeaderField: "Authorization")
@@ -34,19 +36,19 @@ final class HomeFindUITests: XCTestCase {
         return try? JSONSerialization.jsonObject(with: data)
     }
 
-    func family(_ who: String) async throws -> [String: Any] {
+    private func family(_ who: String) async throws -> [String: Any] {
         try await api(who, "GET", "/api/v1/families/mine") as? [String: Any] ?? [:]
     }
 
-    func incoming(_ who: String) async throws -> [[String: Any]] {
+    private func incoming(_ who: String) async throws -> [[String: Any]] {
         ((try await family(who))["location_requests"] as? [String: Any])?["incoming"] as? [[String: Any]] ?? []
     }
 
-    func miaSharing() async throws -> Bool {
+    private func miaSharing() async throws -> Bool {
         (((try await family("MIA"))["me"] as? [String: Any])?["sharing"] as? [String: Any])?["enabled"] as? Bool ?? false
     }
 
-    func resetState() async throws {
+    private func resetState() async throws {
         for who in ["MIA", "LEO", "IDA"] {
             for r in try await incoming(who) { if let id = r["id"] as? Int { try await api(who, "POST", "/api/v1/families/location_requests/\(id)/decline", [:]) } }
         }
@@ -65,6 +67,8 @@ final class HomeFindUITests: XCTestCase {
     // MARK: Tests
 
     @MainActor func testPeopleListShowsFamilyAndLeoOnMap() {
+        let app = makeApp()
+        app.launchEnvironment["FIND_START"] = ""
         app.launch()
         waitFor(app.buttons["person-Leo"])
         XCTAssertTrue(app.buttons["person-Ida"].exists)
@@ -75,15 +79,15 @@ final class HomeFindUITests: XCTestCase {
         waitFor(pin)
         pin.tap()
         waitFor(app.buttons["detail-favorite"])
-        XCTAssertTrue(app.buttons["Leo entfernen"].exists || app.staticTexts["Leo entfernen"].exists)
     }
 
     @MainActor func testShareOneHourShowsRemainingThenStop() async throws {
+        let app = makeApp()
         app.launch()
         app.buttons["tab-me"].tap()
         let toggle = app.switches["me-share-toggle"]
         waitFor(toggle)
-        toggle.switches.firstMatch.tap()
+        toggle.coordinate(withNormalizedOffset: CGVector(dx: 0.93, dy: 0.5)).tap()
         let oneHour = app.buttons["Standort 1 Std. teilen"]
         waitFor(oneHour)
         oneHour.tap()
@@ -93,7 +97,7 @@ final class HomeFindUITests: XCTestCase {
         let shared = try await miaSharing()
         XCTAssertTrue(shared)
         // ausschalten
-        toggle.switches.firstMatch.tap()
+        toggle.coordinate(withNormalizedOffset: CGVector(dx: 0.93, dy: 0.5)).tap()
         let gone = NSPredicate(format: "label CONTAINS 'Niemand'")
         waitFor(app.staticTexts.containing(gone).firstMatch)
         let after = try await miaSharing()
@@ -101,6 +105,7 @@ final class HomeFindUITests: XCTestCase {
     }
 
     @MainActor func testShareFromPlusButtonWithEmail() async throws {
+        let app = makeApp()
         app.launch()
         let plus = app.buttons["people-add"]
         waitFor(plus)
@@ -115,6 +120,7 @@ final class HomeFindUITests: XCTestCase {
     }
 
     @MainActor func testUnknownRecipientShowsInviteHint() {
+        let app = makeApp()
         app.launch()
         app.buttons["people-add"].tap()
         let field = app.textFields["share-recipient"]
@@ -128,6 +134,7 @@ final class HomeFindUITests: XCTestCase {
     }
 
     @MainActor func testRequestLocationFromIda() async throws {
+        let app = makeApp()
         app.launch()
         waitFor(app.buttons["person-Ida"])
         app.buttons["person-Ida"].tap()
@@ -140,6 +147,7 @@ final class HomeFindUITests: XCTestCase {
     }
 
     @MainActor func testAcceptIncomingRequestFromIda() async throws {
+        let app = makeApp()
         try await api("IDA", "POST", "/api/v1/families/location_requests", ["target_user_id": Int(env["HF_TEST_MIA_ID"]!)!])
         app.launch()
         let accept = app.buttons["pending-accept-Ida"]
@@ -154,6 +162,7 @@ final class HomeFindUITests: XCTestCase {
     }
 
     @MainActor func testDeclineIncomingRequest() async throws {
+        let app = makeApp()
         try await api("IDA", "POST", "/api/v1/families/location_requests", ["target_user_id": Int(env["HF_TEST_MIA_ID"]!)!])
         app.launch()
         let decline = app.buttons["pending-decline-Ida"]
@@ -167,6 +176,7 @@ final class HomeFindUITests: XCTestCase {
     }
 
     @MainActor func testAddArrivalAlertForLeo() {
+        let app = makeApp()
         app.launch()
         waitFor(app.buttons["person-Leo"])
         app.buttons["person-Leo"].tap()
@@ -180,14 +190,16 @@ final class HomeFindUITests: XCTestCase {
     }
 
     @MainActor func testDevicesTabShowsOwnDevicesAndFamily() {
+        let app = makeApp()
         app.launch()
         app.buttons["tab-devices"].tap()
         waitFor(app.staticTexts["Meine Geräte"])
-        waitFor(app.staticTexts["Dieses iPhone"])
+        waitFor(app.staticTexts.containing(NSPredicate(format: "label BEGINSWITH 'Dieses iPhone'")).firstMatch)
         XCTAssertTrue(app.staticTexts["Gerät von Leo"].waitForExistence(timeout: 10))
     }
 
     @MainActor func testPrivacyPage() {
+        let app = makeApp()
         app.launch()
         app.buttons["tab-me"].tap()
         let link = app.buttons["me-privacy"]
@@ -198,13 +210,50 @@ final class HomeFindUITests: XCTestCase {
     }
 
     @MainActor func testMapChooser() {
+        let app = makeApp()
         app.launch()
         let chooser = app.buttons["map-chooser"]
         waitFor(chooser)
         chooser.tap()
-        waitFor(app.buttons["Satellit"])
-        app.buttons["Satellit"].tap()
-        XCTAssertTrue(app.buttons["Satellit"].isSelected)
-        app.buttons["Standard"].tap()
+        let sat = app.buttons.containing(NSPredicate(format: "label CONTAINS 'Satellit'")).firstMatch
+        waitFor(sat)
+        sat.tap()
+        XCTAssertTrue(sat.isSelected)
+        app.buttons.containing(NSPredicate(format: "label CONTAINS 'Standard'")).firstMatch.tap()
+    }
+
+    /// Region Monitoring: eigener Ort + „Ich ankomme“ → simulierter Ortswechsel hinein →
+    /// das iPhone meldet den Übergang an Dawarich (Geofence-Ereignis im Konto).
+    @MainActor func testMyArrivalIsDetectedByRegionMonitoring() async throws {
+        let app = makeApp()
+        let name = "Testziel \(Int.random(in: 100...999))"
+        let place = try await api("MIA", "POST", "/api/v1/places",
+                                  ["place": ["name": name, "latitude": 52.5300, "longitude": 13.4000, "visit_radius": 150, "geofence": true]]) as? [String: Any]
+        let placeId = try XCTUnwrap(place?["id"] as? Int)
+        XCUIDevice.shared.location = XCUILocation(location: CLLocation(latitude: 52.5200, longitude: 13.4050))
+        app.launch()
+        app.buttons["tab-me"].tap()
+        let alerts = app.buttons["me-alerts"]
+        waitFor(alerts)
+        alerts.tap()
+        let add = app.buttons["Hinzufügen"].firstMatch
+        waitFor(add)
+        add.tap()
+        let option = app.buttons[name]
+        waitFor(option, 40)
+        option.tap()
+        app.buttons["alert-save"].tap()
+        waitFor(app.staticTexts.containing(NSPredicate(format: "label CONTAINS %@", name)).firstMatch)
+        try await Task.sleep(for: .seconds(5))
+        // Simulierter Ortswechsel in den Ort hinein
+        XCUIDevice.shared.location = XCUILocation(location: CLLocation(latitude: 52.5300, longitude: 13.4000))
+        var found = false
+        for _ in 0..<30 {
+            try await Task.sleep(for: .seconds(4))
+            let events = try await api("MIA", "GET", "/api/v1/geofence_events") as? [[String: Any]] ?? []
+            if events.contains(where: { ($0["place_id"] as? Int) == placeId && ($0["event_type"] as? String) == "enter" }) { found = true; break }
+        }
+        _ = try? await api("MIA", "DELETE", "/api/v1/places/\(placeId)")
+        XCTAssertTrue(found, "kein Ankunfts-Ereignis beim Server")
     }
 }

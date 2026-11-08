@@ -98,7 +98,7 @@ struct PersonDetailView: View {
         }
         .listStyle(.insetGrouped)
         .scrollContentBackground(.hidden)
-        .navigationTitle(p.name)
+        .navigationTitle("")
         .navigationBarTitleDisplayMode(.inline)
         .task(id: p.location?.timestamp) {
             if let l = p.location { model.focus(l.coordinate); await loadETA(to: l.coordinate) }

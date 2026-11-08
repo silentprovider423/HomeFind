@@ -16,4 +16,4 @@ xcrun simctl privacy "$UDID" grant location-always org.homeroll.homefind 2>/dev/
 xcodegen generate -q
 xcodebuild -project HomeFind.xcodeproj -scheme HomeFind -destination "platform=iOS Simulator,id=$UDID" \
   -derivedDataPath "$DERIVED" -resultBundlePath "$DERIVED/tests-$(date +%s).xcresult" test "$@" 2>&1 \
-  | grep -E "Test Case|error:|Executed|TEST (SUCCEEDED|FAILED)|XCTAssert|failed" || true
+  | grep -E "Test Case|error|Executed|TEST (SUCCEEDED|FAILED)|XCTAssert|failed|Failing|Testing" || true

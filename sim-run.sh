@@ -16,6 +16,6 @@ xcrun simctl bootstatus "$UDID" -b >/dev/null
 xcrun simctl location "$UDID" set 52.5200,13.4050
 xcrun simctl install "$UDID" "$APP"
 xcrun simctl privacy "$UDID" grant location-always org.homeroll.homefind || true
-SIMCTL_CHILD_FIND_SERVER="$FIND_SERVER" SIMCTL_CHILD_FIND_TOKEN="$FIND_MIA_KEY" SIMCTL_CHILD_FIND_SKIP_ONBOARDING=1 \
+SIMCTL_CHILD_FIND_SERVER="$FIND_SERVER" SIMCTL_CHILD_FIND_TOKEN="$FIND_MIA_KEY" SIMCTL_CHILD_FIND_SKIP_ONBOARDING=1 SIMCTL_CHILD_FIND_START="${FIND_START:-}" \
   xcrun simctl launch --terminate-running-process "$UDID" org.homeroll.homefind >/dev/null
 echo "gestartet auf $UDID"

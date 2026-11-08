@@ -35,7 +35,7 @@ enum Fmt {
     /// Restzeit des Teilens: „Noch 3 Stunden“ / „Noch 25 Minuten“.
     static func remaining(until date: Date, now: Date = .now) -> String {
         let s = max(0, date.timeIntervalSince(now))
-        if s >= 3600 {
+        if s >= 3570 {  // direkt nach dem Start „Noch 1 Stunde“, nicht „60 Minuten“
             let h = Int((s / 3600).rounded())
             return h == 1 ? String(localized: "Noch 1 Stunde") : String(localized: "Noch \(h) Stunden")
         }

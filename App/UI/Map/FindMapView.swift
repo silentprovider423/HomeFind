@@ -49,6 +49,7 @@ struct FindMapView: View {
     @Environment(AppModel.self) private var model
     @Namespace private var scope
     @State private var showMapChooser = false
+    @State private var didInitialFit = false
 
     private var items: [MapItem] {
         var list: [MapItem] = []
@@ -122,6 +123,12 @@ struct FindMapView: View {
             }
         }
         .mapScope(scope)
+        .onChange(of: items.count, initial: true) { _, count in
+            // Beim ersten Laden alle Personen/Geräte und mich ins Bild holen (wie „Wo ist?“).
+            guard !didInitialFit, count > 0 else { return }
+            didInitialFit = true
+            fitAll()
+        }
         .sheet(isPresented: $showMapChooser) {
             MapChooserView().presentationDetents([.height(330)])
         }
@@ -137,6 +144,20 @@ struct FindMapView: View {
 
     private var mapSymbol: String {
         switch model.mapMode { case .standard: "map"; case .hybrid: "map.fill"; case .satellite: "globe.europe.africa.fill" }
+    }
+
+    private func fitAll() {
+        var coords = items.map(\.coordinate)
+        if let me = model.location.lastLocation?.coordinate { coords.append(me) }
+        guard !coords.isEmpty else { return }
+        let lats = coords.map(\.latitude), lons = coords.map(\.longitude)
+        // Nur der obere Teil (~45 %) ist sichtbar, den Rest deckt die Infokarte ab.
+        let pad = max(0.004, (lats.max()! - lats.min()!) * 0.2)
+        let visible = 0.45
+        let total = (lats.max()! - lats.min()! + 2 * pad) / visible
+        let center = CLLocationCoordinate2D(latitude: lats.max()! + pad - total / 2, longitude: (lons.min()! + lons.max()!) / 2)
+        let span = MKCoordinateSpan(latitudeDelta: total, longitudeDelta: max(0.01, (lons.max()! - lons.min()!) * 1.35))
+        withAnimation { model.camera = .region(MKCoordinateRegion(center: center, span: span)) }
     }
 
     private func zoom(to cluster: MapCluster) {

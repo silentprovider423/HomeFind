@@ -61,12 +61,11 @@ struct MeView: View {
             }
 
             Section {
-                NavigationLink("Standortnamen bearbeiten") { PlacesView() }
-                NavigationLink {
-                    AlertsListView()
-                } label: {
+                NavigationLink("Standortnamen bearbeiten", value: MeRoute.places)
+                NavigationLink(value: MeRoute.alerts) {
                     LabeledContent("Mitteilungen", value: "\(model.alerts.rules.filter(\.enabled).count)")
                 }
+                .accessibilityIdentifier("me-alerts")
                 Button("Mitteilungen von HomeFind anpassen") {
                     if let u = URL(string: UIApplication.openNotificationSettingsURLString) { UIApplication.shared.open(u) }
                 }
@@ -83,7 +82,7 @@ struct MeView: View {
             }
 
             Section {
-                NavigationLink("Datenschutz") { PrivacyView() }
+                NavigationLink("Datenschutz", value: MeRoute.privacy)
                     .accessibilityIdentifier("me-privacy")
             }
 

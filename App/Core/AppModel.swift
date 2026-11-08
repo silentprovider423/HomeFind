@@ -5,6 +5,7 @@ import SwiftUI
 import UserNotifications
 
 enum AppTab: String, CaseIterable, Identifiable { case people, devices, me; var id: String { rawValue } }
+enum MeRoute: Hashable { case privacy, places, alerts }
 
 enum MapSelection: Hashable {
     case person(Int)
@@ -72,6 +73,8 @@ final class AppModel {
     var tab: AppTab = .people
     var peoplePath: [Int] = []
     var devicesPath: [MapSelection] = []
+    var mePath: [MeRoute] = []
+    var showShareSheet = false
     var detent: PresentationDetent = .medium
     var camera: MapCameraPosition = .userLocation(fallback: .automatic)
     var visibleRegion: MKCoordinateRegion?
@@ -89,6 +92,15 @@ final class AppModel {
         regions.onEvent = { [weak self] id, entered, date in self?.handleRegion(id, entered: entered, date: date) }
         Notifier.registerCategories()
         if session != nil { startServices() }
+        // Rechte geändert (z. B. „Immer“ erteilt) → Ortung passend neu starten.
+        NotificationCenter.default.addObserver(forName: .locationAuthorizationChanged, object: nil, queue: .main) { _ in
+            MainActor.assumeIsolated {
+                let model = AppModel.shared
+                guard model.session != nil else { return }
+                if UIApplication.shared.applicationState == .active { model.location.startForeground() }
+                model.updateBackgroundMonitoring()
+            }
+        }
     }
 
     // MARK: Anmelden / Abmelden
@@ -100,6 +112,7 @@ final class AppModel {
         session = s
         family = nil; locations = [:]; devices = []; places = []
         startServices()
+        if UIApplication.shared.applicationState == .active { sceneBecameActive() }
         await refreshAll()
         // Dieses Gerät war früher entfernt → wieder zulassen.
         if accountSettings.removed.contains(ThisDevice.id) {
@@ -138,6 +151,9 @@ final class AppModel {
                 await refreshFamily()
                 if tick % 4 == 0 { await refreshDevices() }
                 if tick % 20 == 0 { await refreshPlaces() }
+                #if DEBUG
+                if tick == 0 { applyDebugStart() }
+                #endif
                 tick += 1
                 try? await Task.sleep(for: .seconds(15))
             }
@@ -637,6 +653,31 @@ final class AppModel {
         }
     }
 }
+
+#if DEBUG
+extension AppModel {
+    /// Nur Debug: Startansicht für Screenshots/Tests, z. B. FIND_START=person:Leo, device:<id>, devices, privacy, share, large.
+    func applyDebugStart() {
+        guard let start = ProcessInfo.processInfo.environment["FIND_START"] else { return }
+        for part in start.split(separator: ",").map(String.init) {
+            let kv = part.split(separator: ":", maxSplits: 1).map(String.init)
+            switch kv[0] {
+            case "person": if let p = people.first(where: { $0.firstName == kv.last }) { select(.person(p.id)) }
+            case "device": if kv.count > 1 { select(.device(kv[1])) }
+            case "devices": tab = .devices
+            case "me": tab = .me
+            case "privacy": tab = .me; mePath = [.privacy]
+            case "places": tab = .me; mePath = [.places]
+            case "alerts": tab = .me; mePath = [.alerts]
+            case "share": tab = .people; showShareSheet = true
+            case "large": detent = .large
+            case "small": detent = MainView.smallDetent
+            default: break
+            }
+        }
+    }
+}
+#endif
 
 extension JSONDecoder {
     static let iso: JSONDecoder = { let d = JSONDecoder(); d.dateDecodingStrategy = .iso8601; return d }()

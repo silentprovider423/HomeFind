@@ -41,12 +41,12 @@ final class APIClientTests: XCTestCase {
         try await leo.setSharing(enabled: true, duration: "permanent")
     }
 
-    func testLoginWithPassword() async throws {
+    @MainActor func testLoginWithPassword() async throws {
         let key = try await DawarichClient.login(server: acc.server, email: acc.leo.email, password: acc.leo.password)
         XCTAssertEqual(key, acc.leo.key)
     }
 
-    func testLoginWrongPasswordFails() async {
+    @MainActor func testLoginWrongPasswordFails() async {
         do {
             _ = try await DawarichClient.login(server: acc.server, email: acc.leo.email, password: "falsch-\(UUID())")
             XCTFail("Anmeldung hätte scheitern müssen")
@@ -55,7 +55,7 @@ final class APIClientTests: XCTestCase {
         } catch { XCTFail("\(error)") }
     }
 
-    func testFamilyHasThreeMembers() async throws {
+    @MainActor func testFamilyHasThreeMembers() async throws {
         let f = try await mia.family()
         XCTAssertEqual(f.members?.count, 3)
         XCTAssertEqual(f.me?.userId, acc.mia.id)
@@ -63,7 +63,7 @@ final class APIClientTests: XCTestCase {
         XCTAssertEqual(f.members?.first { $0.userId == acc.leo.id }?.sharingEnabled, true)
     }
 
-    func testPointFromLeoVisibleToMia() async throws {
+    @MainActor func testPointFromLeoVisibleToMia() async throws {
         let lat = 52.5163 + Double.random(in: 0...0.0009), lon = 13.3777
         let loc = CLLocation(coordinate: .init(latitude: lat, longitude: lon), altitude: 34, horizontalAccuracy: 10,
                              verticalAccuracy: 5, timestamp: .now)
@@ -75,10 +75,11 @@ final class APIClientTests: XCTestCase {
         XCTAssertLessThan(abs(l.date.timeIntervalSinceNow), 120)
     }
 
-    func testShareOneHourShowsExpiryAndStop() async throws {
+    @MainActor func testShareOneHourShowsExpiryAndStop() async throws {
         let r = try await mia.setSharing(enabled: true, duration: ShareDuration.oneHour.serverValue())
         XCTAssertEqual(r.enabled, true)
-        let s = try XCTUnwrap(try await mia.family().me?.sharing)
+        let t1 = try await mia.family()
+        let s = try XCTUnwrap(t1.me?.sharing)
         XCTAssertTrue(s.enabled)
         let exp = try XCTUnwrap(s.expiresAt)
         XCTAssertEqual(exp.timeIntervalSinceNow, 3600, accuracy: 90)
@@ -88,35 +89,41 @@ final class APIClientTests: XCTestCase {
         let loc = CLLocation(coordinate: .init(latitude: 52.5200, longitude: 13.4050), altitude: 0, horizontalAccuracy: 10,
                              verticalAccuracy: -1, timestamp: .now)
         try await mia.postPoint(PointQueue.payload(for: loc, trigger: .foreground, deviceId: "miatest0001"))
-        XCTAssertTrue(try await leo.familyLocations().locations.contains { $0.userId == acc.mia.id })
+        let t2 = try await leo.familyLocations()
+        XCTAssertTrue(t2.locations.contains { $0.userId == acc.mia.id })
         try await mia.setSharing(enabled: false)
-        XCTAssertFalse(try await leo.familyLocations().locations.contains { $0.userId == acc.mia.id })
-        XCTAssertEqual(try await leo.family().members?.first { $0.userId == acc.mia.id }?.sharingEnabled, false)
+        let t3 = try await leo.familyLocations()
+        XCTAssertFalse(t3.locations.contains { $0.userId == acc.mia.id })
+        let t4 = try await leo.family()
+        XCTAssertEqual(t4.members?.first { $0.userId == acc.mia.id }?.sharingEnabled, false)
     }
 
-    func testShareEndOfDayExpiresAroundMidnight() async throws {
+    @MainActor func testShareEndOfDayExpiresAroundMidnight() async throws {
         try await mia.setSharing(enabled: true, duration: ShareDuration.endOfDay.serverValue())
-        let exp = try XCTUnwrap(try await mia.family().me?.sharing.expiresAt)
+        let t5 = try await mia.family()
+        let exp = try XCTUnwrap(t5.me?.sharing.expiresAt)
         let midnight = ShareDuration.endOfDay(now: .now, calendar: .current)
         XCTAssertGreaterThanOrEqual(exp.timeIntervalSince(midnight), -60)
         XCTAssertLessThanOrEqual(exp.timeIntervalSince(midnight), 3600 + 60)
         try await mia.setSharing(enabled: false)
     }
 
-    func testShareIndefinitely() async throws {
+    @MainActor func testShareIndefinitely() async throws {
         try await mia.setSharing(enabled: true, duration: ShareDuration.indefinitely.serverValue())
-        let s = try XCTUnwrap(try await mia.family().me?.sharing)
+        let t6 = try await mia.family()
+        let s = try XCTUnwrap(t6.me?.sharing)
         XCTAssertTrue(s.enabled)
         XCTAssertNil(s.expiresAt)
         try await mia.setSharing(enabled: false)
     }
 
-    func testRequestDeclineThenAccept() async throws {
+    @MainActor func testRequestDeclineThenAccept() async throws {
         // Ida bittet Mia um ihren Standort → Mia lehnt ab.
         let created = try await ida.requestLocation(of: acc.mia.id)
         var incoming = try await mia.family().locationRequests?.incoming ?? []
         XCTAssertTrue(incoming.contains { $0.id == created.request.id && $0.requester.userId == acc.ida.id })
-        XCTAssertTrue(try await ida.family().locationRequests?.outgoing.contains { $0.targetUserId == acc.mia.id } ?? false)
+        let t7 = try await ida.family()
+        XCTAssertTrue(t7.locationRequests?.outgoing.contains { $0.targetUserId == acc.mia.id } ?? false)
         try await mia.declineRequest(created.request.id)
         incoming = try await mia.family().locationRequests?.incoming ?? []
         XCTAssertFalse(incoming.contains { $0.id == created.request.id })
@@ -124,13 +131,14 @@ final class APIClientTests: XCTestCase {
         // Neue Anfrage → Mia nimmt für 1 Std. an → teilt.
         let second = try await ida.requestLocation(of: acc.mia.id)
         try await mia.acceptRequest(second.request.id, duration: "1h")
-        let s = try XCTUnwrap(try await mia.family().me?.sharing)
+        let t8 = try await mia.family()
+        let s = try XCTUnwrap(t8.me?.sharing)
         XCTAssertTrue(s.enabled)
         XCTAssertNotNil(s.expiresAt)
         try await mia.setSharing(enabled: false)
     }
 
-    func testRequestWhileAlreadySharingIsRefused() async throws {
+    @MainActor func testRequestWhileAlreadySharingIsRefused() async throws {
         do {
             try await mia.requestLocation(of: acc.leo.id)   // Leo teilt schon
             XCTFail("Anfrage hätte abgelehnt werden müssen")
@@ -139,7 +147,7 @@ final class APIClientTests: XCTestCase {
         }
     }
 
-    func testDeviceNoteRoundTrip() async throws {
+    @MainActor func testDeviceNoteRoundTrip() async throws {
         let id = "unittest\(Int.random(in: 1000...9999))"
         var rec = DeviceRecord(id: id, name: "Test-iPad", emoji: "💻", model: "iPad", system: "iPadOS 26", appVersion: "1.0",
                                latitude: 52.5, longitude: 13.4, accuracy: 10, battery: 50, charging: false, updatedAt: .now)
@@ -147,27 +155,32 @@ final class APIClientTests: XCTestCase {
         let note = try await mia.createNote(title: "homefind-device:\(id)", body: body)
         rec.name = "Umbenannt"
         try await mia.updateNote(id: note.id, body: String(data: try JSONEncoder.iso.encode(rec), encoding: .utf8)!)
-        let found = try XCTUnwrap(try await mia.notes().first { $0.id == note.id })
+        let t9 = try await mia.notes()
+        let found = try XCTUnwrap(t9.first { $0.id == note.id })
         let decoded = try JSONDecoder.iso.decode(DeviceRecord.self, from: Data(found.body.utf8))
         XCTAssertEqual(decoded.name, "Umbenannt")
         XCTAssertEqual(decoded.emoji, "💻")
         try await mia.deleteNote(id: note.id)
-        XCTAssertFalse(try await mia.notes().contains { $0.id == note.id })
+        let t10 = try await mia.notes()
+        XCTAssertFalse(t10.contains { $0.id == note.id })
         // Leo sieht Mias Notizen nie.
-        XCTAssertFalse(try await leo.notes().contains { $0.title?.hasPrefix("homefind-device:\(id)") == true })
+        let t11 = try await leo.notes()
+        XCTAssertFalse(t11.contains { $0.title?.hasPrefix("homefind-device:\(id)") == true })
     }
 
-    func testPlaceAndTransition() async throws {
+    @MainActor func testPlaceAndTransition() async throws {
         let p = try await mia.createPlace(name: "Testort \(Int.random(in: 1...999))", latitude: 52.5210, longitude: 13.4110, radius: 150)
         XCTAssertEqual(p.geofence, true)
-        XCTAssertTrue(try await mia.places().contains { $0.id == p.id })
+        let t12 = try await mia.places()
+        XCTAssertTrue(t12.contains { $0.id == p.id })
         try await mia.postTransition(placeId: p.id, enter: true, at: .now, latitude: 52.5210, longitude: 13.4110,
                                      accuracy: 15, deviceId: "unittest")
         try await mia.deletePlace(p.id)
-        XCTAssertFalse(try await mia.places().contains { $0.id == p.id })
+        let t13 = try await mia.places()
+        XCTAssertFalse(t13.contains { $0.id == p.id })
     }
 
-    func testPointQueueFlushesAgainstServer() async throws {
+    @MainActor func testPointQueueFlushesAgainstServer() async throws {
         let q = PointQueue(fileName: "test-queue-\(UUID()).json")
         for i in 0..<3 {
             let loc = CLLocation(coordinate: .init(latitude: 52.5163 + Double(i) * 0.0001, longitude: 13.3777), altitude: 0,
@@ -179,7 +192,7 @@ final class APIClientTests: XCTestCase {
         XCTAssertTrue(q.pending.isEmpty)
     }
 
-    func testWrongKeyIsUnauthorized() async {
+    @MainActor func testWrongKeyIsUnauthorized() async {
         do {
             _ = try await acc.client("0000").family()
             XCTFail()
@@ -189,7 +202,7 @@ final class APIClientTests: XCTestCase {
 
 /// Reine App-Logik ohne Server.
 final class LogicTests: XCTestCase {
-    func testEndOfDayHours() {
+    @MainActor func testEndOfDayHours() {
         var cal = Calendar(identifier: .gregorian); cal.timeZone = TimeZone(identifier: "Europe/Berlin")!
         let at2230 = cal.date(from: DateComponents(year: 2026, month: 11, day: 8, hour: 22, minute: 30))!
         XCTAssertEqual(ShareDuration.hoursUntilEndOfDay(now: at2230, calendar: cal), 2)
@@ -199,7 +212,7 @@ final class LogicTests: XCTestCase {
         XCTAssertEqual(ShareDuration.indefinitely.serverValue(), "permanent")
     }
 
-    func testAlertRuleFiresOnArrivalOnce() {
+    @MainActor func testAlertRuleFiresOnArrivalOnce() {
         let store = AlertStore(fileName: "test-rules-\(UUID()).json")
         store.add(AlertRule(subject: .person(7), personName: "Leo", trigger: .arrives, placeName: "Schule",
                             latitude: 52.5200, longitude: 13.4050, radius: 150, repeats: false))
@@ -213,7 +226,7 @@ final class LogicTests: XCTestCase {
         XCTAssertFalse(store.rules[0].enabled)
     }
 
-    func testAlertRuleLeaveRepeats() {
+    @MainActor func testAlertRuleLeaveRepeats() {
         let store = AlertStore(fileName: "test-rules-\(UUID()).json")
         store.add(AlertRule(subject: .person(3), personName: "Ida", trigger: .leaves, placeName: "Arbeit",
                             latitude: 52.5, longitude: 13.4, radius: 200, repeats: true))
@@ -227,7 +240,7 @@ final class LogicTests: XCTestCase {
         XCTAssertTrue(store.evaluate(personId: 3, location: loc(52.51, 4)).isEmpty) // gleicher Zeitstempel → ignoriert
     }
 
-    func testMeRegionRule() {
+    @MainActor func testMeRegionRule() {
         let store = AlertStore(fileName: "test-rules-\(UUID()).json")
         let rule = AlertRule(subject: .me, trigger: .arrives, placeName: "Privat", latitude: 52.52, longitude: 13.40,
                              radius: 150, serverPlaceId: 12, repeats: true)
@@ -237,7 +250,7 @@ final class LogicTests: XCTestCase {
         XCTAssertTrue(store.evaluateMe(regionId: "place:12", entered: false).isEmpty)
     }
 
-    func testClustering() {
+    @MainActor func testClustering() {
         func item(_ n: Int, _ lat: Double) -> MapItem {
             MapItem(selection: .person(n), kind: .person(initials: "X", seed: n), title: "\(n)", coordinate: .init(latitude: lat, longitude: 13.4))
         }
@@ -246,7 +259,7 @@ final class LogicTests: XCTestCase {
         XCTAssertEqual(Clustering.clusters(items, span: .init(latitudeDelta: 0.001, longitudeDelta: 0.001)).count, 3)
     }
 
-    func testConnectLinkRoundTrip() throws {
+    @MainActor func testConnectLinkRoundTrip() throws {
         let s = Session(server: URL(string: "https://find.example.org")!, apiKey: "abc123")
         let back = try XCTUnwrap(SessionStore.session(fromConnect: SessionStore.connectURL(for: s)))
         XCTAssertEqual(back, s)
@@ -254,7 +267,7 @@ final class LogicTests: XCTestCase {
         XCTAssertEqual(SessionStore.normalizedServer("http://10.0.0.5:3000")?.absoluteString, "http://10.0.0.5:3000")
     }
 
-    func testPayloadFormat() {
+    @MainActor func testPayloadFormat() {
         let loc = CLLocation(coordinate: .init(latitude: 52.5, longitude: 13.4), altitude: 30, horizontalAccuracy: 8.4,
                              verticalAccuracy: 3, course: 0, speed: 2, timestamp: Date(timeIntervalSince1970: 1_800_000_000))
         let p = PointQueue.payload(for: loc, trigger: .visit, deviceId: "dev1")
@@ -266,7 +279,7 @@ final class LogicTests: XCTestCase {
         XCTAssertEqual(p["vel"] as? Int, 7)
     }
 
-    func testDateParsing() {
+    @MainActor func testDateParsing() {
         XCTAssertNotNil(DawarichClient.parseDate("2026-11-08T00:07:21.000+01:00"))
         XCTAssertNotNil(DawarichClient.parseDate("2026-11-08T00:07:21+01:00"))
     }
